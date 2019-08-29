@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs =  require('fs');
 
+
+const port = process.env.PORT || 3000;
 var app = express();
 
 app.set('view engine' , 'hbs');
@@ -65,6 +67,12 @@ app.get('/backend', (request, response) => {
   })
 });
 
+app.listen(port, () => {
+  console.log(`port used ${port}`);
+});
+
+
+
 // app.get('/help', (request, response) => {
 //   response.send({
 //     welcomeMessage : 'Welcome to Help page',
@@ -73,9 +81,6 @@ app.get('/backend', (request, response) => {
 //   })
 // });
 
-app.listen(3000, () => {
-  console.log('Hey You have successfully run your Program');
-});
 
 
 
