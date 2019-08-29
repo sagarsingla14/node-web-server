@@ -14,6 +14,10 @@ hbs.registerHelper('getYear', () => {
   return new Date().getFullYear();
 })
 
+hbs.registerHelper('getDate', () => {
+  return new Date();
+})
+
 hbs.registerHelper('toUpper' , (text) => {
   return text.toUpperCase();
 })
@@ -44,26 +48,30 @@ app.use((request , response , next) => {
 });
 
 app.get('/' , (request, response) => {
-  response.send({
+  response.render('home.hbs', {
     title : 'Home Page',
-    name : 'Sagar',
-    age : 20,
-    likes : ['Sport Programming ' , 'BackEnd Development']
+    message : 'Welcome to My website'
   });
 });
 
 app.get('/about', (request, response) => {
   response.render('about.hbs', {
     title : 'about',
-    welcomeMessage : 'welcome to about page',
+    message : 'welcome to about page',
   });
 });
 
 app.get('/backend', (request, response) => {
   response.render('backend.hbs',{
-    welcomeMessage : 'Welcome to Backend page',
-    title : 'Backend Yahooo',
-    message : 'BackEnd Created successfully'
+    message : 'Welcome to Backend page',
+    title : 'Backend Yahooo'
+  })
+});
+
+app.get('/projects', (request , response) => {
+  response.render('projects.hbs', {
+    title : 'Projects Page',
+    message : 'Projects to be Displayed here'
   })
 });
 
@@ -86,12 +94,15 @@ app.listen(port, () => {
 
 
 
+// likes : ['Sport Programming ' , 'BackEnd Development']
 
 //
 // app.get('/Sagar' , (request ,response) => {
 //     response.render('Sagar.hbs' , {
 //         title : 'Sagar Page',
 //         message : 'welcome To my page',
+// name : 'Sagar',
+// age : 20,
 //         text : 'I love sport Programming',
 //         copyright  : new Date().getFullYear(),
 //         text : 'I love sport Programming'
